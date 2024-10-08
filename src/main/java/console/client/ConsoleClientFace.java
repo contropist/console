@@ -1,6 +1,7 @@
 package console.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import console.ConsoleInitializer;
 import java.io.IOException;
 import org.fisco.bcos.sdk.v3.client.Client;
 
@@ -15,6 +16,8 @@ public interface ConsoleClientFace {
 
     void getSealerList(String[] params) throws IOException;
 
+    void getCandidateSealerList(String[] params) throws IOException;
+
     void getSyncStatus(String[] params) throws IOException;
 
     void getConsensusStatus(String[] params) throws IOException;
@@ -24,6 +27,8 @@ public interface ConsoleClientFace {
     void getBlockByHash(String[] params) throws IOException;
 
     void getBlockByNumber(String[] params) throws IOException;
+
+    void getLatestBlock(String[] params) throws IOException;
 
     void getBlockHeaderByHash(String[] params) throws IOException;
 
@@ -47,6 +52,8 @@ public interface ConsoleClientFace {
 
     void getSystemConfigByKey(String[] params) throws Exception;
 
+    void listConfigs(String[] params) throws Exception;
+
     void newAccount(String[] params);
 
     void listAccount(String[] params);
@@ -61,9 +68,9 @@ public interface ConsoleClientFace {
 
     void getGroupNodeInfo(String[] params) throws JsonProcessingException;
 
-    void setNodeName(String[] params) throws IOException;
+    void setNodeName(ConsoleInitializer consoleInitializer, String[] params) throws IOException;
 
-    void clearNodeName();
+    void clearNodeName(ConsoleInitializer consoleInitializer);
 
-    void getNodeName();
+    void getNodeName(ConsoleInitializer consoleInitializer);
 }
